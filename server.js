@@ -1,6 +1,7 @@
 // calling dependencies
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 // calling the api routes
 const users = require("./routes/api/users");
@@ -9,6 +10,10 @@ const posts = require("./routes/api/posts");
 
 // init express
 const app = express();
+
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //DB config
 const db = require("./config/keys").mongoURI;
